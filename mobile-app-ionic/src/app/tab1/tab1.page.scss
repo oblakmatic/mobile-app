@@ -1,4 +1,42 @@
-.welcome-card ion-img {
-  max-height: 35vh;
+.welcome-card ion-img, .book-card ion-img{
+  height: 220px;
   overflow: hidden;
+
+}
+
+span:after {
+  content: ",";
+}
+
+span:last-child:after {
+  content: "";
+}
+
+.book-card ion-card-title{
+  font-size: 0.8rem;
+
+}
+.book-card ion-card-subtitle{
+  font-size: 0.6rem;
+}
+
+.book-card ion-card-subtitle,
+.book-card ion-card-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+
+
+.card{
+  width:50%;
+  float:left;
+  padding: 5%;
+}
+
+ion-card-header, ion-card-content{
+  padding: 0;
+  padding-top: 5px;
 }
