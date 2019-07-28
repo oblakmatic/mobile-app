@@ -11,18 +11,29 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {BooksService} from './services/books-service.service';
+import { AuthenticateService } from './services/authentication.service';
 
 import {HttpClientModule} from '@angular/common/http';
+
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
+  imports: [
+      BrowserModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      AngularFireAuthModule
+  ],
   providers: [
-    StatusBar,
-    SplashScreen,
+      StatusBar,
+      SplashScreen,
       BooksService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+      AuthenticateService,
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

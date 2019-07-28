@@ -1,9 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content></ion-content>
+
+<ion-content >
+
+  <ion-list >
+    <ion-item lines="none" >
+      <h2 padding-top>Search</h2>
+
+    </ion-item>
+
+      <ion-item lines="none" >
+          <h6>Search by any of these options:</h6>
+      </ion-item>
+
+    <ion-grid class="animated fadeInUp">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchButton()">
+            <ion-row>
+                <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating">ISBN</ion-label>
+                    <ion-input formControlName="isbn" type="number"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating">Author</ion-label>
+                    <ion-input formControlName="author"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating">Title</ion-label>
+                    <ion-input formControlName="title"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating">Keyword</ion-label>
+                    <ion-input formControlName="keyword"></ion-input>
+                  </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-button id="search" type="submit">Search</ion-button>
+
+            <p class="hide warning">Please fill out at least one field</p>
+        </form>
+    </ion-grid>
+
+
+
+  </ion-list>
+</ion-content>

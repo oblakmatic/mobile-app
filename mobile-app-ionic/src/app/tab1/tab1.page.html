@@ -1,7 +1,5 @@
 
-
 <ion-content >
-
     <ion-list  >
       <ion-item lines="none" >
         <h2 padding-top>Popular</h2>
@@ -10,7 +8,7 @@
       <ion-grid>
         <ion-row>
           <ion-col size="6" *ngFor="let item of books.items">
-            <div class="book-card animated fadeInUp delay-1s" *ngIf="item.volumeInfo != null">
+            <div class="book-card animated fadeInUp" *ngIf="item.volumeInfo != null" (click)="openDetails(item.id)">
               <ion-img *ngIf="item.volumeInfo.imageLinks != undefined" src="{{item.volumeInfo.imageLinks.smallThumbnail}}"></ion-img>
               <ion-card-header >
                 <ion-card-subtitle >

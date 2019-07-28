@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="book != undefined">
+    <ion-row >
+      <ion-col size="6">
+        <ion-img *ngIf="book.volumeInfo.imageLinks != undefined" src="{{book.volumeInfo.imageLinks.medium}}"></ion-img>
+      </ion-col>
+      <ion-col size="6">
+        <div>
+          <h1>{{book.volumeInfo.title}}</h1>
+          <h3>
+              <span *ngFor="let a of book.volumeInfo.authors">
+              {{a}}<br>
+              </span>
+          </h3>
+
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="desc">
+      <p class="hide" [innerHTML]="book.volumeInfo.description"></p>
+      <div [hidden]="read" class="faded">
+        <button id="read-more" (click)="readMore()">Read More</button>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

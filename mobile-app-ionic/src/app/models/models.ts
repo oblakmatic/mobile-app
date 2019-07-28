@@ -18,6 +18,10 @@ export class Info {
     imageLinks: {};
     language: string;
     pageCount: number;
+    publisher: string;
     publishedDate: string;
     title: string;
+    industryIdentifiers: [];
+    averageRating: any;
+
 }
