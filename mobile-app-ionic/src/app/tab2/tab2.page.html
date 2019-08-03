@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Bookmarks
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+
+
+  <ion-button id="api-call" (click)="APICall()">API call</ion-button>
+  <h2>{{ myText  | json }} </h2>
+
+</ion-content>

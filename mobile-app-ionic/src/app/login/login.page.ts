@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import * as firebase from 'firebase/app';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -13,56 +15,28 @@ export class LoginPage implements OnInit {
     validationsForm: FormGroup;
     errorMessage: string = '';
 
-
-    validationMessages = {
-        'email': [
-            { type: 'required', message: 'Email is required.' },
-            { type: 'pattern', message: 'Please enter a valid email.' }
-        ],
-        'password': [
-            { type: 'required', message: 'Password is required.' },
-            { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-        ]
-    };
+    provider = new firebase.auth.GoogleAuthProvider();
 
     constructor(
 
         private navCtrl: NavController,
         private authService: AuthenticateService,
-        private formBuilder: FormBuilder
+        private router: Router
 
     ) { }
 
     ngOnInit() {
 
-        this.validationsForm = this.formBuilder.group({
-            email: new FormControl('', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-            ])),
-            password: new FormControl('', Validators.compose([
-                Validators.minLength(5),
-                Validators.required
-            ])),
-        });
     }
 
 
 
-
-    loginUser(value){
-        this.authService.loginUser(value)
+    tryGoogleLogin(){
+        console.log("init login")
+        this.authService.loginUser()
             .then(res => {
-                console.log(res);
-                this.errorMessage = "";
-                this.navCtrl.navigateForward('/dashboard');
-            }, err => {
-                this.errorMessage = err.message;
+                this.router.navigate(['app']);
             })
-    }
-
-    goToRegisterPage(){
-        this.navCtrl.navigateForward('/register');
     }
 
 }

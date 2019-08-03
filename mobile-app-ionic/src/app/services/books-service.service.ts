@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 
 import {Book, BookCollection} from '../models/models';
-import {Observable} from 'rxjs';
+import {throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -46,5 +47,23 @@ export class BooksService {
 
 
         return this.httpClient.get(defaultUrl);
+    }
+
+    public APICall() {
+
+        let headerDict = {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Authorization' : 'Basic ' + btoa('client-id')
+
+        };
+
+        let requestOptions = {
+            headers: new HttpHeaders(headerDict)
+        };
+
+        return this.httpClient.get(
+            'https://www.googleapis.com/books/v1/mylibrary/bookshelves/8/volumes', requestOptions)
+            ;
     }
 }

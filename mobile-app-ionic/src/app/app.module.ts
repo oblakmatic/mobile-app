@@ -17,6 +17,12 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AngularFireAuthModule} from '@angular/fire/auth';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {UserService} from './services/user.service';
+import {AuthGuard} from './auth.guard';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,13 +32,17 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
       AppRoutingModule,
       BrowserAnimationsModule,
       HttpClientModule,
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFirestoreModule,
   ],
   providers: [
       StatusBar,
       SplashScreen,
       BooksService,
       AuthenticateService,
+      AuthGuard,
+      UserService,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
