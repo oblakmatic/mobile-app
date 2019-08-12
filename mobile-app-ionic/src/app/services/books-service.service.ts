@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 
 import {Book, BookCollection} from '../models/models';
-import {throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {UserService} from './user.service';
 
 
 @Injectable({
@@ -16,7 +15,7 @@ export class BooksService {
 
     books: BookCollection;
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient, private userService: UserService) { }
 
 
     public getBooks(url?: string) {
@@ -52,18 +51,23 @@ export class BooksService {
     public APICall() {
 
         let headerDict = {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Authorization' : 'Basic ' + btoa('client-id')
-
+            'Authorization' : 'Bearer ' + this.userService.userToken
         };
 
         let requestOptions = {
             headers: new HttpHeaders(headerDict)
         };
 
+        return this.httpClient.post(
+            'https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/addVolume?volumeId=NRWlitmahXkC', null, requestOptions)
+            ;
+/*
         return this.httpClient.get(
             'https://www.googleapis.com/books/v1/mylibrary/bookshelves/8/volumes', requestOptions)
             ;
+
+            */
+
+
     }
 }

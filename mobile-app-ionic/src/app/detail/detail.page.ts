@@ -12,7 +12,7 @@ import {BooksService} from '../services/books-service.service';
 export class DetailPage implements OnInit {
 
   id: any;
-  read: boolean = false;
+  read = false;
   book: Book;
 
   constructor(public navCtrl: NavController,

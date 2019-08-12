@@ -12,30 +12,25 @@ export class AuthenticateService {
             let provider = new firebase.auth.GoogleAuthProvider();
             provider.addScope('profile');
             provider.addScope('email');
-            provider.
-            this.angularFireAuth.auth
-                .signInWithRedirect(provider, )
-                .then(res => {
-                    console.log("logged in")
-                    console.log(res)
-                    resolve(res);
-                })
-        })
+            provider.addScope('https://www.googleapis.com/auth/books')
+            this.angularFireAuth.auth.signInWithRedirect(provider).then(result =>{
+                    resolve(result);
+                });
+
+        });
     }
 
     logoutUser(){
-        return new Promise((resolve, reject) => {
-            if(firebase.auth().currentUser){
-                firebase.auth().signOut()
-                    .then(() => {
-                        console.log('Logout');
-                        resolve();
-                    }).catch((error) => {
-                    reject();
+        return new Promise<any>((resolve, reject) => {
+            this.angularFireAuth.auth
+                .signOut()
+                .then(res => {
+                    console.log("logged out")
+                    resolve(res);
                 });
-            }
-        })
+            });
     }
+
 
     userDetails(){
         return firebase.auth().currentUser;

@@ -8,7 +8,7 @@ import {BooksService} from '../services/books-service.service';
 })
 export class Tab2Page {
 
-   myText: object;
+   myText: any;
 
   constructor(private booksService: BooksService) {}
 
@@ -20,14 +20,16 @@ export class Tab2Page {
 
           res => {
 
-              console.log(res);
+              this.myText = "YES";
 
-
+            console.log(res)
 
           },
 
           err => {
-              this.myText = err.toString();
+              this.myText = "NO";
+
+              console.log(err)
           },
       );
   }

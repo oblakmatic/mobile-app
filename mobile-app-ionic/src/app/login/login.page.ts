@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import * as firebase from 'firebase/app';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {GooglePlus} from '@ionic-native/google-plus/ngx';
+import OAuthCredential = firebase.auth.OAuthCredential;
 
 @Component({
     selector: 'app-login',
@@ -12,31 +16,25 @@ import {Router} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-    validationsForm: FormGroup;
-    errorMessage: string = '';
+    user: Observable<firebase.User>;
 
-    provider = new firebase.auth.GoogleAuthProvider();
+    constructor(private afAuth: AngularFireAuth,
+                private authService: AuthenticateService) {
 
-    constructor(
+        this.user = this.afAuth.authState;
 
-        private navCtrl: NavController,
-        private authService: AuthenticateService,
-        private router: Router
-
-    ) { }
+    }
 
     ngOnInit() {
 
     }
 
+    googleLogin() {
+        this.authService.loginUser();
+    }
 
-
-    tryGoogleLogin(){
-        console.log("init login")
-        this.authService.loginUser()
-            .then(res => {
-                this.router.navigate(['app']);
-            })
+    signOut() {
+        this.afAuth.auth.signOut();
     }
 
 }
