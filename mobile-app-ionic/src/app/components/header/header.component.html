@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ title }}
+    </ion-title>
+
+    <div>
+      {{ userService.userEmail }}
+      <button type="button" class="btn btn-signin" (click)="logoutUser()">
+        <span>Logout</span>
+      </button>
+    </div>
+
+  </ion-toolbar>
+
+</ion-header>

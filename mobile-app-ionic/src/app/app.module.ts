@@ -22,6 +22,12 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {UserService} from './services/user.service';
 import {AuthGuard} from './auth.guard';
+import {GooglePlus} from '@ionic-native/google-plus/ngx';
+
+import {ComponentsModule} from './components/components.module';
+import {NgwWowModule} from 'ngx-wow';
+import {NavigationService} from './services/navigation.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +41,8 @@ import {AuthGuard} from './auth.guard';
       AngularFireAuthModule,
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule,
+      ComponentsModule,
+      NgwWowModule
   ],
   providers: [
       StatusBar,
@@ -43,6 +51,8 @@ import {AuthGuard} from './auth.guard';
       AuthenticateService,
       AuthGuard,
       UserService,
+      NavigationService,
+      GooglePlus,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

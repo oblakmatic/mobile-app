@@ -1,22 +1,13 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Search
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
+<app-header title="Search"></app-header>
 
-<ion-content >
-
-  <ion-list >
-
+<ion-content>
       <ion-item lines="none" >
           <h6>Search by any of these options:</h6>
       </ion-item>
 
     <ion-grid class="animated fadeInUp">
         <form [formGroup]="searchForm" (ngSubmit)="onSearchButton()">
-            <ion-row>
+            <ion-row [class.hide]="searchClosed==true">
                 <ion-col size="12">
                   <ion-item>
                     <ion-label position="floating">ISBN</ion-label>
@@ -44,12 +35,9 @@
             </ion-row>
 
             <ion-button id="search" type="submit">Search</ion-button>
-
-            <p class="hide warning">Please fill out at least one field</p>
         </form>
     </ion-grid>
 
+    <app-list [books]="books" tabName="tab3"></app-list>
 
-
-  </ion-list>
 </ion-content>

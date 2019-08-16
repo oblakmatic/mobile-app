@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {BooksService} from '../services/books-service.service';
+import {BookCollection} from '../models/models';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -8,29 +10,56 @@ import {BooksService} from '../services/books-service.service';
 })
 export class Tab2Page {
 
-   myText: any;
+  books: BookCollection;
 
-  constructor(private booksService: BooksService) {}
+  constructor(private booksService: BooksService, private toastController: ToastController) {}
 
 
 
-  APICall() {
+    ngOnInit(): void {
+        this.loadContent();
 
-      this.booksService.APICall().subscribe(
+    }
 
-          res => {
+    doRefresh(event) {
+        console.log('Begin async operation');
 
-              this.myText = "YES";
+        this.loadContent(event);
 
-            console.log(res)
+    }
 
-          },
 
-          err => {
-              this.myText = "NO";
+    loadContent(event = null) {
+        this.booksService.getBookmarkedBooks().subscribe(res => {
 
-              console.log(err)
-          },
-      );
-  }
+            this.books = res;
+
+            this.books.items.forEach(book => {
+                if (book.volumeInfo.imageLinks === undefined)
+                    book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'}
+            })
+
+
+                if (event != null)
+                event.target.complete();
+
+        }
+        ,
+        error => {
+            if (event != null)
+                event.target.cancel();
+
+            this.presentToast()
+        });
+    }
+
+    async presentToast() {
+        const toast = await this.toastController.create({
+            message: 'Error loading content',
+            duration: 2000
+        });
+        toast.present();
+    }
+
+
 }

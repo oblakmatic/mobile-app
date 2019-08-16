@@ -1,0 +1,22 @@
+<ion-list>
+    <ion-grid>
+        <ion-row *ngIf="books != undefined">
+            <ion-col  class="book-card animated fadeInUp" size="6" *ngFor="let item of books.items">
+                <div  *ngIf="item.volumeInfo != null" (click)="openDetails(item.id)">
+                    <ion-img *ngIf="item.volumeInfo.imageLinks != undefined" src="{{item.volumeInfo.imageLinks.smallThumbnail}}"></ion-img>
+                    <ion-card-header >
+                        <!--     <ion-card-subtitle >
+                   <span *ngFor="let a of item.volumeInfo.authors">
+                      {{a}}
+                      </span>
+                        </ion-card-subtitle> -->
+                        <ion-card-title>{{item.volumeInfo.title}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                    </ion-card-content>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-list>

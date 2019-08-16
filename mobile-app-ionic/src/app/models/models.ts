@@ -21,7 +21,13 @@ export class Info {
     publisher: string;
     publishedDate: string;
     title: string;
-    industryIdentifiers: [];
+    industryIdentifiers: ISBN[];
     averageRating: any;
 
 }
+
+export class ISBN {
+    identifier: string;
+    type: string;
+}
+

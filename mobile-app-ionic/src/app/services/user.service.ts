@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 export class UserService {
 
     userToken: any;
+    userEmail: any;
 
     constructor(
         public db: AngularFirestore,
@@ -19,16 +20,18 @@ export class UserService {
 
         this.afAuth.auth.getRedirectResult().then(res => {
             if (res.user) {
-                console.log("KJ")
-                console.log((<any> res).credential.accessToken);
+
+
 
                 this.userToken = (<any> res).credential.accessToken;
+                this.userEmail = res.user.email;
             }
         });
 
         return new Promise<any>((resolve, reject) => {
             let user = firebase.auth().onAuthStateChanged(function(user){
                 if (user) {
+                    this.userEmail = user.email;
                     resolve(user);
                 } else {
                     reject('No user logged in');

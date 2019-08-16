@@ -9,3 +9,32 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Work Sans', sans-serif;
+  color: #1e2023;
+}
+
+ion-label{
+  color: #1e2023;
+}
+
+p, button, input{
+  color: #777;
+}
+
+p{
+  line-height: 1.2rem;
+}
+
+ion-content{
+  background-color: white;
+}
+
+
+ion-refresher{
+  z-index: 10000;
+
+}

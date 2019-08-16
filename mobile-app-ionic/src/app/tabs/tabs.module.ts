@@ -6,6 +6,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
+import {HeaderComponent} from '../components/header/header.component';
+import {ComponentsModule} from '../components/components.module';
 
 @NgModule({
   imports: [

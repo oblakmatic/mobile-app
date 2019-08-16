@@ -1,34 +1,12 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Popular
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
+<app-header title='Recommended'></app-header>
+
 
 
 <ion-content >
-    <ion-list  >
 
-      <ion-grid>
-        <ion-row>
-          <ion-col size="6" *ngFor="let item of books.items">
-            <div class="book-card animated fadeInUp" *ngIf="item.volumeInfo != null" (click)="openDetails(item.id)">
-              <ion-img *ngIf="item.volumeInfo.imageLinks != undefined" src="{{item.volumeInfo.imageLinks.smallThumbnail}}"></ion-img>
-              <ion-card-header >
-                <ion-card-subtitle >
-                    <span *ngFor="let a of item.volumeInfo.authors">
-                    {{a}}
-                    </span>
-                </ion-card-subtitle>
-                <ion-card-title>{{item.volumeInfo.title}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-              </ion-card-content>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-    </ion-list>
+    <app-list [books]="books" tabName="tab1"></app-list>
 </ion-content>

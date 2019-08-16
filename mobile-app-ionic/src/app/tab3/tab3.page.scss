@@ -3,10 +3,18 @@ h6{
   color: #a2a4ab;
 }
 
-.hide{
-  display: none ;
-}
 #search{
   margin-left: 16px;
   margin-top: 16px;
+}
+
+ion-row{
+  max-height: 300px;
+  transition: max-height 1s;
+  overflow: hidden;
+}
+
+
+ion-row.hide{
+  max-height: 0;
 }

@@ -9,14 +9,7 @@ import {Router} from '@angular/router';
 })
 export class TabsPage {
 
-  constructor(private router: Router, private authService: AuthenticateService) {}
+  constructor() {}
 
-    logoutUser(){
-        console.log("init logout")
-        this.authService.logoutUser()
-            .then(res => {
-                this.router.navigate(['']);
-            })
-    }
 
 }

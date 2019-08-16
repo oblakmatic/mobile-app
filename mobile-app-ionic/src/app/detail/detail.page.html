@@ -15,17 +15,20 @@
       <ion-col size="6">
         <div>
           <h1>{{book.volumeInfo.title}}</h1>
-          <h3>
-              <span *ngFor="let a of book.volumeInfo.authors">
-              {{a}}<br>
-              </span>
-          </h3>
+          <div>
+            <h6 *ngFor="let a of book.volumeInfo.authors">
+                {{a}}
+            </h6>
+          </div>
 
+          <ion-button *ngIf="!bookmarked" (click)="addBookmarkButton()">ADD</ion-button>
+          <ion-button *ngIf="bookmarked" color="danger" (click)="removeBookmarkButton()">REMOVE</ion-button>
         </div>
       </ion-col>
     </ion-row>
 
     <ion-row class="desc">
+      <h3>Description</h3>
       <p class="hide" [innerHTML]="book.volumeInfo.description"></p>
       <div [hidden]="read" class="faded">
         <button id="read-more" (click)="readMore()">Read More</button>

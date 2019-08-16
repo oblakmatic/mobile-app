@@ -1,16 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Bookmarks
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="My Bookmarks"> </app-header>
 
 <ion-content>
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-
-  <ion-button id="api-call" (click)="APICall()">API call</ion-button>
-  <h2>{{ myText }} </h2>
-
+  <app-list [books]="books" tabName="tab2"></app-list>
 </ion-content>

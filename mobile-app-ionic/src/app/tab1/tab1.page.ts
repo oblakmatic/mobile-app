@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 
 import { BooksService } from '../services/books-service.service';
 import {BookCollection} from '../models/models';
-import {DetailPage} from '../detail/detail.page';
-import {NavController} from '@ionic/angular';
+
+import {NavController, ToastController} from '@ionic/angular';
+
 
 @Component({
     selector: 'app-tab1',
@@ -14,27 +15,51 @@ export class Tab1Page implements OnInit {
 
     books: BookCollection = {};
 
-    constructor(private booksService: BooksService, public navCtrl: NavController) {}
+    constructor( private booksService: BooksService, private toastController: ToastController) {}
 
     ngOnInit(): void {
-
-       this.booksService.getBooks().subscribe(res => {
-
-           this.books = res;
-
-           this.books.items.forEach(book => {
-               if (book.volumeInfo.imageLinks === undefined)
-                   book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'}
-           })
-       });
+        this.loadContent();
     }
 
-    public openDetails(id){
-        this.navCtrl.navigateRoot('/detail/' + id);
+
+    doRefresh(event) {
+        console.log('Begin async operation');
+
+        this.loadContent(event);
+
     }
 
-    goBack(){
-        this.navCtrl.pop();
+    loadContent(event = null) {
+        this.booksService.getBooks().subscribe(res => {
+
+            this.books = res;
+
+            this.books.items.forEach(book => {
+                if (book.volumeInfo.imageLinks === undefined) {
+                    book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'};
+                }
+            });
+
+            if (event != null) {
+                event.target.complete();
+            }
+        }
+        ,
+        error => {
+            if (event != null) {
+                event.target.complete();
+            }
+
+            this.presentToast();
+        });
+    }
+
+    async presentToast() {
+        const toast = await this.toastController.create({
+            message: 'Error loading content',
+            duration: 2000
+        });
+        toast.present();
     }
 
 

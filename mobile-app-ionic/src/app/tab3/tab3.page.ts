@@ -1,8 +1,9 @@
 import {Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {BookCollection} from '../models/models';
 import {BooksService} from '../services/books-service.service';
-import {NavController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {__await} from 'tslib';
 
 @Component({
   selector: 'app-tab3',
@@ -15,10 +16,13 @@ export class Tab3Page implements OnInit {
 
     searchForm: FormGroup;
 
+    searchClosed = false;
+
     constructor(private booksService: BooksService,
                 public navCtrl: NavController,
                 private formBuilder: FormBuilder,
-                private el: ElementRef) {}
+                private el: ElementRef,
+                private alertController: AlertController) {}
 
     ngOnInit(): void {
         this.searchForm = this.formBuilder.group({
@@ -32,9 +36,10 @@ export class Tab3Page implements OnInit {
     }
 
     onSearchButton() {
-        let warning = this.el.nativeElement.querySelector('p.warning');
-        if (!warning.classList.contains('hide')) {
-            warning.classList.add('hide');
+
+        if (this.searchClosed) {
+            this.searchClosed = false;
+            return;
         }
 
         let isbn = this.searchForm.value.isbn.toString();
@@ -42,19 +47,33 @@ export class Tab3Page implements OnInit {
         let title = this.searchForm.value.title.toString();
         let keyword = this.searchForm.value.keyword.toString();
 
-        if (isbn.length + author.length + title.length + keyword.length === 0 && warning.classList.contains('hide')){
-            this.el.nativeElement.querySelector('p.hide').classList.remove('hide');
+        if (isbn.length + author.length + title.length + keyword.length === 0){
+            __await(this.presentAlert());
             return;
         }
 
-        this.booksService.getBooksBySearch(isbn, author, title, keyword).subscribe(res=> {
+        this.booksService.getBooksBySearch(isbn, author, title, keyword).subscribe(res => {
 
-            console.log(res);
+            this.books = res;
+            this.searchClosed = true;
+            this.books.items.forEach(book => {
+                if (book.volumeInfo.imageLinks === undefined)
+                    book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'}
+            })
 
             }
         );
 
 
+    }
+
+    async presentAlert() {
+        const alert = await this.alertController.create({
+            message: 'Please fill out at least one field',
+            buttons: ['OK']
+        });
+
+        await alert.present();
     }
 
 
