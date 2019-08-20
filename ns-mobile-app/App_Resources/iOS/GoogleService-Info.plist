@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>945541497200-6ejbhe507mibjlv16m2ae6co4v18fqnc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.945541497200-6ejbhe507mibjlv16m2ae6co4v18fqnc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>945541497200-de0pc4guabknce7aiqr6nt0s7tv8fu7v.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATJUAkhx68Ifug5g85kmfVzwjFUUOJEx4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>945541497200</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.hybridapp.easybooks2</string>
+	<key>PROJECT_ID</key>
+	<string>books-api-242713</string>
+	<key>STORAGE_BUCKET</key>
+	<string>books-api-242713.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:945541497200:ios:5ad0848e25859a65</string>
+	<key>DATABASE_URL</key>
+	<string>https://books-api-242713.firebaseio.com</string>
+</dict>
+</plist>

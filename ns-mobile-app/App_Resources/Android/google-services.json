@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "945541497200",
+    "firebase_url": "https://books-api-242713.firebaseio.com",
+    "project_id": "books-api-242713",
+    "storage_bucket": "books-api-242713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945541497200:android:8cfedfa0620224c5",
+        "android_client_info": {
+          "package_name": "io.hybridapp.easybooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945541497200-h5a949qob4obovchqvco57nis0p4i9u9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.hybridapp.easybooks",
+            "certificate_hash": "02824c61dcf50b2c8477d6f9fd795bb1a946c35c"
+          }
+        },
+        {
+          "client_id": "945541497200-vr8tlp0v0oakn1nolli77tn3n83kiaas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9y-C8AnCuqbLG4bH090dO6tvXdEdK4fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945541497200-vr8tlp0v0oakn1nolli77tn3n83kiaas.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "945541497200-6ejbhe507mibjlv16m2ae6co4v18fqnc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.hybridapp.easybooks2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945541497200:android:5ad0848e25859a65",
+        "android_client_info": {
+          "package_name": "io.hybridapp.easybooks2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945541497200-de0pc4guabknce7aiqr6nt0s7tv8fu7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.hybridapp.easybooks2",
+            "certificate_hash": "02824c61dcf50b2c8477d6f9fd795bb1a946c35c"
+          }
+        },
+        {
+          "client_id": "945541497200-vr8tlp0v0oakn1nolli77tn3n83kiaas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9y-C8AnCuqbLG4bH090dO6tvXdEdK4fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945541497200-vr8tlp0v0oakn1nolli77tn3n83kiaas.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "945541497200-6ejbhe507mibjlv16m2ae6co4v18fqnc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.hybridapp.easybooks2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.nsmobileapp",
+    "id": "io.hybridapp.easybooks2",
     "tns-android": {
       "version": "5.4.0"
     },
@@ -21,20 +21,25 @@
     "@angular/platform-browser": "~7.2.2",
     "@angular/platform-browser-dynamic": "~7.2.2",
     "@angular/router": "~7.2.2",
+    "@nativescript/schematics": "^0.7.0",
     "nativescript-angular": "~7.2.2",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.4.0",
     "tns-core-modules": "~5.4.0",
+    "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "~7.2.2",
     "@ngtools/webpack": "~7.3.8",
+    "@types/jasmine": "^2.8.16",
+    "install": "^0.13.0",
     "nativescript-dev-typescript": "~0.10.0",
-    "typescript": "^3.1.4",
-    "nativescript-dev-webpack": "~0.24.0"
+    "nativescript-dev-webpack": "~0.24.0",
+    "npm": "^6.10.3",
+    "tslint": "^5.16.0"
   },
   "gitHead": "8c1a4866a66daab09bf5ef8e5a96472687192373",
   "readme": "NativeScript Application"
