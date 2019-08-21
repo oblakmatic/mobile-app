@@ -1,24 +1,37 @@
 import { Injectable } from '@angular/core';
-
-
+import {ITnsOAuthTokenResult, TnsOAuthClient} from "nativescript-oauth2";
 
 @Injectable()
 export class AuthenticationService {
 
-    constructor(){}
+    private client: TnsOAuthClient = null;
 
-    loginUser(){
-        console.log("2")
+    constructor() { }
 
+    public loginUser(): Promise<ITnsOAuthTokenResult> {
+
+        this.client = new TnsOAuthClient("google");
+
+        return new Promise<ITnsOAuthTokenResult>((resolve, reject) => {
+            this.client.loginWithCompletion(
+                (tokenResult: ITnsOAuthTokenResult, error) => {
+                    if (error) {
+                        console.error("back to main page with error: ");
+                        console.error(error);
+                        reject(error);
+                    } else {
+                        console.log("back to main page with access token: ");
+                        console.log(tokenResult);
+                        resolve(tokenResult);
+                    }
+                }
+            );
+        });
     }
 
-
-    logoutUser(){
-
-    }
-
-
-    userDetails(){
-
+    public logoutUser() {
+        if (this.client) {
+            this.client.logout();
+        }
     }
 }

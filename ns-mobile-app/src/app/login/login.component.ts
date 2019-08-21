@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 
 import {Observable} from 'rxjs';
+import {ITnsOAuthTokenResult} from "nativescript-oauth2";
+import {RouterExtensions} from "nativescript-angular";
+import {Page} from "tns-core-modules/ui/page";
 
 
 @Component({
@@ -13,11 +16,7 @@ export class LoginComponent implements OnInit {
 
    // user: Observable<firebase.User>;
 
-    constructor(
-                private authService: AuthenticationService) {
-
-    //    this.user = this.afAuth.authState;
-
+    constructor(private routerExtensions: RouterExtensions, private authService: AuthenticationService) {
     }
 
     ngOnInit() {
@@ -25,7 +24,13 @@ export class LoginComponent implements OnInit {
     }
 
     googleLogin() {
-        this.authService.loginUser();
+        this.authService.loginUser().then((result: ITnsOAuthTokenResult) => {
+            console.log("back to login component with token " + result.accessToken);
+            this.routerExtensions
+                .navigate(["/items"])
+                .then(() => console.log("navigated to /authenticated"))
+                .catch(err => console.log("error navigating to /authenticated: " + err));
+        });
     }
 
     signOut() {

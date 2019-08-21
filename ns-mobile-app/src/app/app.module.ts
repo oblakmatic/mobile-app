@@ -8,9 +8,8 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import {LoginComponent} from "~/app/login/login.component";
 import {AuthenticationService} from "~/app/services/authentication.service";
 
-
-import {environment} from "~/environments/environment";
 import {HttpClientModule} from "@angular/common/http";
+import { TabsComponent } from './tabs/tabs.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -32,7 +31,8 @@ import {HttpClientModule} from "@angular/common/http";
         AppComponent,
         ItemsComponent,
         LoginComponent,
-        ItemDetailComponent
+        ItemDetailComponent,
+        TabsComponent
     ],
     providers: [AuthenticationService],
     schemas: [

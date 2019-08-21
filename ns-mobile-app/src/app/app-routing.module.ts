@@ -5,10 +5,12 @@ import { Routes } from "@angular/router";
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import {LoginComponent} from "~/app/login/login.component";
+import {TabsComponent} from "~/app/tabs/tabs.component";
 
 const routes: Routes = [
     // { path: "", redirectTo: "/items", pathMatch: "full" },
-    { path: "", component: LoginComponent },
+    // { path: "", component: LoginComponent },
+    { path: "", component: TabsComponent },
     { path: "items", component: ItemsComponent },
     { path: "item/:id", component: ItemDetailComponent }
 ];

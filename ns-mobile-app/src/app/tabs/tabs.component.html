@@ -1,0 +1,17 @@
+<TabView [(ngModel)]="tabSelectedIndex" (selectedIndexChanged)="onSelectedIndexChanged($event)" androidTabsPosition="bottom" >
+    <StackLayout *tabItem="{title: 'Home', iconSource: 'res://icon', textTransform: 'capitalize'}">
+        <StackLayout>
+            <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Bookmarks', iconSource: 'res://home', textTransform: 'capitalize'}">
+        <StackLayout>
+            <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://icon', textTransform: 'capitalize'}">
+        <StackLayout>
+            <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
+        </StackLayout>
+    </StackLayout>
+</TabView>
