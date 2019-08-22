@@ -10,6 +10,10 @@ import {AuthenticationService} from "~/app/services/authentication.service";
 
 import {HttpClientModule} from "@angular/common/http";
 import { TabsComponent } from './tabs/tabs.component';
+import { ListComponent } from './components/list/list.component';
+import { Tab1Component } from './tab1/tab1.component';
+import { Tab2Component } from './tab2/tab2.component';
+import { Tab3Component } from './tab3/tab3.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -32,7 +36,11 @@ import { TabsComponent } from './tabs/tabs.component';
         ItemsComponent,
         LoginComponent,
         ItemDetailComponent,
-        TabsComponent
+        TabsComponent,
+        ListComponent,
+        Tab1Component,
+        Tab2Component,
+        Tab3Component
     ],
     providers: [AuthenticationService],
     schemas: [

@@ -1,15 +1,17 @@
-<TabView [(ngModel)]="tabSelectedIndex" (selectedIndexChanged)="onSelectedIndexChanged($event)" androidTabsPosition="bottom" >
-    <StackLayout *tabItem="{title: 'Home', iconSource: 'res://icon', textTransform: 'capitalize'}">
+<ActionBar title="Recommended" class="action-bar"></ActionBar>
+
+<TabView [(ngModel)]="tabSelectedIndex" class="tabs" (selectedIndexChanged)="onSelectedIndexChanged($event)" androidTabsPosition="bottom" >
+    <StackLayout   *tabItem="{title: 'Home', iconSource: 'res://home', textTransform: 'capitalize'}">
+        <StackLayout>
+            <ns-tab1></ns-tab1>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Bookmarks', iconSource: 'res://star', textTransform: 'capitalize'}">
         <StackLayout>
             <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
         </StackLayout>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Bookmarks', iconSource: 'res://home', textTransform: 'capitalize'}">
-        <StackLayout>
-            <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
-        </StackLayout>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://icon', textTransform: 'capitalize'}">
+    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://search', textTransform: 'capitalize'}">
         <StackLayout>
             <Label [text]="tabSelectedIndexResult" class="h2 m-t-16 text-center" textWrap="true"></Label>
         </StackLayout>
