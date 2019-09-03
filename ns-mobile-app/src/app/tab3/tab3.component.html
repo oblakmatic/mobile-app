@@ -1,1 +1,27 @@
-<Button text="tab3 works!" class="btn btn-primary"></Button>
+<StackLayout class="form">
+    <Label text="Search by any of these options"></Label>
+    <StackLayout class="input-field">
+        <Label text="ISBN"></Label>
+        <TextField class="input input-border" [(ngModel)]="isbn"></TextField>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+        <Label text="Author"></Label>
+        <TextField class="input input-border" [(ngModel)]="author"></TextField>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+        <Label text="Title"></Label>
+        <TextField class="input input-border" [(ngModel)]="title"></TextField>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+        <Label text="Keywords"></Label>
+        <TextField class="input input-border" [(ngModel)]="keyword"></TextField>
+    </StackLayout>
+
+    <Button text="Search" class="btn btn-primary" (tap)="onSearchButton()"></Button>
+</StackLayout>
+
+
+<ns-list [books]="books"></ns-list>

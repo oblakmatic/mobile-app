@@ -1,0 +1,28 @@
+<ActionBar title="Details">
+    <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+<StackLayout *ngIf="book!=undefined">
+    <StackLayout orientation="horizontal">
+
+        <Image  [src]="book.volumeInfo.imageLinks.thumbnail" width="50%" ios:stretch="aspectFill" async></Image>
+
+        <StackLayout orientation="vertical">
+            <Label [text]="book.volumeInfo.title"></Label>
+            <Label *ngFor="let item of book.volumeInfo.authors" [text]="item"></Label>
+
+            <Button *ngIf="!bookmarked" (tap)="addBookmarkButton()" text="ADD" class="btn"></Button>
+            <Button *ngIf="bookmarked" (tap)="removeBookmarkButton()" text="REMOVE" class="btn"></Button>
+
+        </StackLayout>
+
+
+    </StackLayout>
+
+    <HtmlView html="{{book.volumeInfo.description}}"></HtmlView>
+
+
+
+</StackLayout>
+</ScrollView>

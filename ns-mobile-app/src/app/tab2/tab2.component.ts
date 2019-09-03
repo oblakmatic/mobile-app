@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BooksService} from "~/app/services/books.service";
+import {BookCollection} from "~/app/models";
 
 @Component({
   selector: 'ns-tab2',
@@ -8,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Component implements OnInit {
 
-  constructor() { }
+    books: BookCollection;
+
+  constructor(private booksService: BooksService) { }
 
   ngOnInit() {
+      this.loadContent();
   }
+
+
+    loadContent(event = null) {
+        this.booksService.getBookmarkedBooks().subscribe(res => {
+
+                this.books = res;
+
+                this.books.items.forEach(book => {
+                    if (book.volumeInfo.imageLinks === undefined)
+                        book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'}
+                })
+
+
+
+
+            }
+            ,
+            error => {
+
+            });
+    }
 
 }

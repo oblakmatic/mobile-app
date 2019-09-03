@@ -1,9 +1,5 @@
 import {configureTnsOAuth} from "nativescript-oauth2";
-import {
-    TnsOaProvider,
-    TnsOaProviderOptionsGoogle,
-    TnsOaProviderGoogle,
-} from "nativescript-oauth2/providers";
+import {TnsOaProvider, TnsOaProviderOptionsGoogle, TnsOaProviderGoogle} from "nativescript-oauth2/providers";
 
 export function configureGoogleProvider() {
 

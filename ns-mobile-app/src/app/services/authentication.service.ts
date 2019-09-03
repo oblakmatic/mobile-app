@@ -20,8 +20,6 @@ export class AuthenticationService {
                         console.error(error);
                         reject(error);
                     } else {
-                        console.log("back to main page with access token: ");
-                        console.log(tokenResult);
                         resolve(tokenResult);
                     }
                 }

@@ -1,1 +1,14 @@
-<Button text="list works!" class="btn btn-primary"></Button>
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView  *ngIf="books" [items]="books.items">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout class="item-padding animated fadeInUp" (tap)="openDetails(item.id)">
+                <Image [src]="item.volumeInfo.imageLinks.smallThumbnail" height="220" ios:stretch="aspectFill" ></Image>
+                <Label class="item-title" [text]="item.volumeInfo.title" ></Label>
+            </StackLayout>
+        </ng-template>
+
+        <!-- >> angular-listview-item-layouts-grid -->
+        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" ios:itemHeight="250" spanCount="2"></ListViewGridLayout>
+        <!-- << angular-listview-item-layouts-grid -->
+    </RadListView>
+</GridLayout>

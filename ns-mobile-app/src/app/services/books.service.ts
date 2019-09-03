@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient,  HttpHeaders} from '@angular/common/http';
 
 import {Book, BookCollection} from '../models';
 import {UserService} from './user.service';
-import {forkJoin} from 'rxjs';
 
 
 @Injectable({
@@ -20,7 +19,7 @@ export class BooksService {
 
 
     public getBooks(url?: string) {
-        /*
+
                 let headerDict = {
                     'Authorization' : 'Bearer ' + this.userService.userToken
                 };
@@ -28,8 +27,8 @@ export class BooksService {
                 let requestOptions = {
                     headers: new HttpHeaders(headerDict)
                 };
-        */
-        return this.httpClient.get(this.apiURL);
+
+        return this.httpClient.get('https://www.googleapis.com/books/v1/mylibrary/bookshelves/8/volumes', requestOptions);
 
     }
 
@@ -55,6 +54,7 @@ export class BooksService {
 
     public isBookAdded(isbn: any) {
 
+        console.log(this.userService.userToken)
         let headerDict = {
             'Authorization' : 'Bearer ' + this.userService.userToken
         };
@@ -106,21 +106,7 @@ export class BooksService {
         if (title.length > 0)
             defaultUrl += '+intitle:' + title;
 
-
-
         return this.httpClient.get(defaultUrl);
     }
 
-    public APICall() {
-
-        let headerDict = {
-            'Authorization' : 'Bearer ' + this.userService.userToken
-        };
-
-        let requestOptions = {
-            headers: new HttpHeaders(headerDict)
-        };
-
-
-    }
 }

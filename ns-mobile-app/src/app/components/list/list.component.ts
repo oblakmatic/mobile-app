@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BookCollection} from "~/app/models";
+import {RouterExtensions} from "nativescript-angular";
 
 @Component({
     selector: 'ns-list',
@@ -11,9 +12,14 @@ export class ListComponent implements OnInit {
     @Input()
     books: BookCollection = {};
 
-    constructor() { }
+    constructor(private routerExtensions: RouterExtensions) { }
 
     ngOnInit() {
+    }
+
+    public openDetails(id){
+
+        this.routerExtensions.navigate(['/detail', id]);
     }
 
 }
