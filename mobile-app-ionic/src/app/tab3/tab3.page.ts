@@ -4,6 +4,8 @@ import {BooksService} from '../services/books-service.service';
 import {AlertController, NavController} from '@ionic/angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {__await} from 'tslib';
+import {DeviceMotion, DeviceMotionAccelerationData} from '@ionic-native/device-motion/ngx';
+import {ShakeService} from '../services/shake.service';
 
 @Component({
   selector: 'app-tab3',
@@ -22,7 +24,9 @@ export class Tab3Page implements OnInit {
                 public navCtrl: NavController,
                 private formBuilder: FormBuilder,
                 private el: ElementRef,
-                private alertController: AlertController) {}
+                private alertController: AlertController,
+                private deviceMotion: DeviceMotion,
+                private shakeService: ShakeService) {}
 
     ngOnInit(): void {
         this.searchForm = this.formBuilder.group({
@@ -33,9 +37,27 @@ export class Tab3Page implements OnInit {
             title: new FormControl(''),
             keyword: new FormControl('')
         });
+
+        let subscription = this.deviceMotion.watchAcceleration({frequency: 200}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+            if (this.shakeService.shake(acceleration)){
+                this.searchClosed = false;
+                this.books = {};
+                this.searchForm.patchValue(
+                    {
+                        isbn: '',
+                        author: '',
+                        title: '',
+                        keyword: ''
+                    }
+                )
+
+            }
+
+        });
     }
 
     onSearchButton() {
+
 
         if (this.searchClosed) {
             this.searchClosed = false;

@@ -27,6 +27,8 @@ import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {ComponentsModule} from './components/components.module';
 import {NgwWowModule} from 'ngx-wow';
 import {NavigationService} from './services/navigation.service';
+import {DeviceMotion} from '@ionic-native/device-motion/ngx';
+import {ShakeService} from './services/shake.service';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import {NavigationService} from './services/navigation.service';
       UserService,
       NavigationService,
       GooglePlus,
+      DeviceMotion,
+      ShakeService,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
