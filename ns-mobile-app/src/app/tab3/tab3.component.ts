@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {BookCollection} from "~/app/models";
 import {BooksService} from "~/app/services/books.service";
 
+import {ShakeService} from "~/app/services/shake.service";
+import {startAccelerometerUpdates} from "nativescript-accelerometer";
+
 @Component({
   selector: 'ns-tab3',
   templateUrl: './tab3.component.html',
@@ -18,13 +21,21 @@ export class Tab3Component implements OnInit {
     title = "";
     keyword = "";
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private shakeService: ShakeService) { }
 
   ngOnInit() {
+      startAccelerometerUpdates(acc => {
+          if (this.shakeService.shake(acc)){
 
+
+                this.searchClosed=!this.searchClosed;
+
+          }
+      }, { sensorDelay: "normal" });
   }
 
     onSearchButton() {
+
 
         if (this.searchClosed) {
             this.searchClosed = false;

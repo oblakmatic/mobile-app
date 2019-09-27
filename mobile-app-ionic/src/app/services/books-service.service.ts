@@ -12,7 +12,7 @@ import {forkJoin} from 'rxjs';
 })
 export class BooksService {
 
-    apiURL: string = 'https://www.googleapis.com/books/v1/volumes?q=fantasy&maxResults=8&country=SI';
+    apiURL: string = 'https://www.googleapis.com/books/v1/volumes?q=jack&maxResults=8&country=SI';
 
     books: BookCollection;
 
@@ -29,7 +29,7 @@ export class BooksService {
             headers: new HttpHeaders(headerDict)
         };
 
-        return this.httpClient.get('https://www.googleapis.com/books/v1/mylibrary/bookshelves/8/volumes', requestOptions);
+        return this.httpClient.get(this.apiURL);
 
     }
 

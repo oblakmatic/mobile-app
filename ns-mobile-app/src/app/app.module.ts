@@ -3,8 +3,6 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
 import {LoginComponent} from "~/app/login/login.component";
 import {AuthenticationService} from "~/app/services/authentication.service";
 
@@ -19,6 +17,7 @@ import {UserService} from "~/app/services/user.service";
 import {NativeScriptUIListViewModule} from "nativescript-ui-listview/angular";
 import { DetailComponent } from './detail/detail.component';
 import {NativeScriptFormsModule} from "nativescript-angular";
+import {ShakeService} from "~/app/services/shake.service";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -40,9 +39,7 @@ import {NativeScriptFormsModule} from "nativescript-angular";
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
         LoginComponent,
-        ItemDetailComponent,
         TabsComponent,
         ListComponent,
         Tab1Component,
@@ -50,7 +47,7 @@ import {NativeScriptFormsModule} from "nativescript-angular";
         Tab3Component,
         DetailComponent
     ],
-    providers: [AuthenticationService, BooksService, UserService],
+    providers: [AuthenticationService, BooksService, UserService, ShakeService],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

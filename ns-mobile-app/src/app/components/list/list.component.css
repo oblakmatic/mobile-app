@@ -11,3 +11,23 @@
     margin-top: 5px;
     font-size: 12px;
 }
+
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+        transform: translate(0, 100, 0);
+
+
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+
+    }
+}
+
+.fadeInUp {
+    animation-name: opacity;
+    animation-duration: 1;
+}

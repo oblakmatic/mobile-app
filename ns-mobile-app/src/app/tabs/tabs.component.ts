@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectedIndexChangedEventData} from "tns-core-modules/ui/tab-view";
 import {Page} from "tns-core-modules/ui/page";
+import {AuthenticationService} from "~/app/services/authentication.service";
+import {RouterExtensions} from "nativescript-angular";
 
 @Component({
   selector: 'ns-tabs',
@@ -11,13 +13,12 @@ export class TabsComponent implements OnInit {
 
     public tabSelectedIndex: number;
 
-    ngOnInit() {
+    constructor(private page: Page, private authService: AuthenticationService, private routerExtensions: RouterExtensions) {
+        this.tabSelectedIndex = 0;
     }
 
-    constructor(private page: Page) {
-        this.tabSelectedIndex = 0;
+    ngOnInit() {
         this.page.actionBar.title = "Recommended";
-
     }
 
     onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
@@ -33,6 +34,10 @@ export class TabsComponent implements OnInit {
         }
     }
 
+    logout(){
+        this.authService.logoutUser();
+
+    }
 
 
 }

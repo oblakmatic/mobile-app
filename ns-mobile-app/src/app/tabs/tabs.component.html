@@ -1,11 +1,16 @@
+<ActionBar>
+    <ActionItem text="Logout" ios.position="right" (tap)="logout()"></ActionItem>
+</ActionBar>
+
 <TabView [(ngModel)]="tabSelectedIndex" class="tabs" (selectedIndexChanged)="onSelectedIndexChanged($event)" androidTabsPosition="bottom" >
-    <StackLayout   *tabItem="{title: 'Home', iconSource: 'res://home.png', textTransform: 'capitalize'}">
+    <StackLayout class="tab"  *tabItem="{title: 'Home', iconSource: 'res://home', textTransform: 'capitalize'}">
             <ns-tab1></ns-tab1>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Bookmarks', iconSource: 'res://star.png', textTransform: 'capitalize'}">
+    <StackLayout class="tab" *tabItem="{title: 'Bookmarks', iconSource: 'res://star', textTransform: 'capitalize'}">
             <ns-tab2></ns-tab2>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://search.png', textTransform: 'capitalize'}">
+    <StackLayout class="tab" *tabItem="{title: 'Search', iconSource: 'res://search', textTransform: 'capitalize'}">
         <ns-tab3></ns-tab3>
     </StackLayout>
 </TabView>
+

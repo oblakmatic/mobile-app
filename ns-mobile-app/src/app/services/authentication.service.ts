@@ -29,7 +29,13 @@ export class AuthenticationService {
 
     public logoutUser() {
         if (this.client) {
-            this.client.logout();
+            try {
+                this.client.logout();
+            }
+            catch (e) {
+                console.log(e)
+            }
+
         }
     }
 }

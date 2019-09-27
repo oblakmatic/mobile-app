@@ -6,6 +6,7 @@ import {RouterExtensions} from "nativescript-angular";
     selector: 'ns-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.css']
+
 })
 export class ListComponent implements OnInit {
 
@@ -23,3 +24,4 @@ export class ListComponent implements OnInit {
     }
 
 }
+

@@ -1,1 +1,18 @@
-/* Add mobile styles for the component here.  */
+Label{
+    margin-left: 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #a2a4ab;
+}
+
+#search{
+    margin-left: 16px;
+    margin-top: 16px;
+}
+
+
+TextField{
+    border-width: 0 0 2px 0;
+    border-bottom-color: #ccc;
+}
+
