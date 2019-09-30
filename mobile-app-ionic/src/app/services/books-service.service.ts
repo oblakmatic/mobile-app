@@ -19,7 +19,7 @@ export class BooksService {
     constructor(private httpClient: HttpClient, private userService: UserService) { }
 
 
-    public getBooks(url?: string) {
+    public getBooks() {
 
         let headerDict = {
             'Authorization' : 'Bearer ' + this.userService.userToken
@@ -29,7 +29,7 @@ export class BooksService {
             headers: new HttpHeaders(headerDict)
         };
 
-        return this.httpClient.get(this.apiURL);
+        return this.httpClient.get('https://www.googleapis.com/books/v1/mylibrary/bookshelves/8/volumes', requestOptions);
 
     }
 
