@@ -45,7 +45,7 @@
     "@nativescript/schematics": "^0.6.0",
     "nativescript-dev-typescript": "0.10.0",
     "nativescript-dev-webpack": "0.24.0",
-    "npm": "6.10.3",
+    "npm": "6.13.4",
     "tslint": "5.16.0"
   },
   "gitHead": "8c1a4866a66daab09bf5ef8e5a96472687192373",
