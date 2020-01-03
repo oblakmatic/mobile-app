@@ -6,7 +6,7 @@
 <StackLayout *ngIf="book!=undefined">
     <StackLayout orientation="horizontal">
 
-        <Image  [src]="book.volumeInfo.imageLinks.thumbnail" width="50%" ios:stretch="aspectFill" async></Image>
+        <Image  [src]="book.volumeInfo.imageLinks.medium" width="50%" ios:stretch="aspectFill" async></Image>
 
         <StackLayout orientation="vertical">
             <Label [text]="book.volumeInfo.title"></Label>

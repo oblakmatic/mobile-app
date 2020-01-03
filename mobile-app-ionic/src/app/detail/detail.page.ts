@@ -31,6 +31,16 @@ export class DetailPage implements OnInit {
 
           this.book = res;
 
+          if (this.book.volumeInfo.imageLinks === undefined) {
+              this.book.volumeInfo.imageLinks.medium = 'assets/images/no_cover.jpg';
+          }
+          else{
+              let re = /http:/gi;
+              let str = this.book.volumeInfo.imageLinks.medium;
+              let st = str.replace(re, "https:");
+              this.book.volumeInfo.imageLinks.medium = st;
+          }
+
           if (this.book.volumeInfo.description == null || this.book.volumeInfo.description.length < 2){
               this.read = true;
               this.book.volumeInfo.description = 'No description available';

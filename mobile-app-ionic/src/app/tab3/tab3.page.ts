@@ -38,7 +38,7 @@ export class Tab3Page implements OnInit {
             keyword: new FormControl('')
         });
 
-        let subscription = this.deviceMotion.watchAcceleration({frequency: 200}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+        this.deviceMotion.watchAcceleration({frequency: 200}).subscribe((acceleration: DeviceMotionAccelerationData) => {
             if (this.shakeService.shake(acceleration)){
                 this.searchClosed = false;
                 this.books = {};
@@ -79,8 +79,15 @@ export class Tab3Page implements OnInit {
             this.books = res;
             this.searchClosed = true;
             this.books.items.forEach(book => {
-                if (book.volumeInfo.imageLinks === undefined)
-                    book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'}
+                if (book.volumeInfo.imageLinks === undefined) {
+                    book.volumeInfo.imageLinks.smallThumbnail = 'assets/images/no_cover.jpg';
+                }
+                else{
+                    let re = /http:/gi;
+                    let str = book.volumeInfo.imageLinks.smallThumbnail;
+                    let st = str.replace(re, "https:");
+                    book.volumeInfo.imageLinks.smallThumbnail = st;
+                }
             })
 
             }

@@ -14,7 +14,7 @@ export interface Info {
     canonicalVolumeLink: string;
     categories: [];
     description: string;
-    imageLinks: {};
+    imageLinks: {"smallThumbnail" : string, thumbnail: string, "medium": string};
     language: string;
     pageCount: number;
     publisher: string;

@@ -36,7 +36,13 @@ export class Tab1Page implements OnInit {
 
             this.books.items.forEach(book => {
                 if (book.volumeInfo.imageLinks === undefined) {
-                    book.volumeInfo.imageLinks = { smallThumbnail: 'assets/images/no_cover.jpg'};
+                    book.volumeInfo.imageLinks.smallThumbnail = 'assets/images/no_cover.jpg';
+                }
+                else{
+                    let re = /http:/gi;
+                    let str = book.volumeInfo.imageLinks.smallThumbnail;
+                    let st = str.replace(re, "https:");
+                    book.volumeInfo.imageLinks.smallThumbnail = st;
                 }
             });
 
